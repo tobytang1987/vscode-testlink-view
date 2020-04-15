@@ -1,0 +1,70 @@
+{
+	"name": "vscode-testlink-view",
+	"displayName": "TestLink Viewer",
+	"description": "VS code extension to view TestLink test steps.",
+	"version": "0.0.1",
+	"publisher": "tobytang",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/tobytang1987/vscode-testlink-view"
+	},
+	"bugs": {
+		"url": "https://github.com/tobytang1987/vscode-testlink-view/issues"
+	},
+	"engines": {
+		"vscode": "^1.32.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:testlink.testSteps"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "testlink.testSteps",
+				"title": "TestLink: View test steps"
+			}
+		],
+		"configuration": {
+			"title": "TestLink",
+			"properties": {
+				"testlink.host": {
+					"type": "string",
+					"default": "localhost",
+					"description": "Hostname or IP where TestLink is hosted"
+				},
+				"testlink.port": {
+					"type": "number",
+					"default": 80,
+					"description": "Host port where TestLink is hosted"
+				},
+				"testlink.secure": {
+					"type": "boolean",
+					"default": false,
+					"description": "Use or not secure connection. If set to true, use https and port 443 if a port was not defined else uses http and port 80"
+				},
+				"testlink.apiToken": {
+					"type": "string",
+					"description": "The api key to interact with TestLink"
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"lint": "tslint -p ./",
+		"watch": "tsc -watch -p ./"
+	},
+	"dependencies": {
+		"string-strip-html": "^4.3.20",
+		"testlink-xmlrpc": "^1.9.18-5"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.32.0",
+		"typescript": "^3.5.1"
+	}
+}
